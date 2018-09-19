@@ -11,38 +11,35 @@ namespace PigLatin
         public string Translate(string v)
         {
             string[] libary = new string[] {"a", "e", "i", "o"};
-            char firstChar = v[0];
-            string result = null;
+            char testChar = v[0];
             bool checker = true;
 
-            if(!libary.Contains(firstChar.ToString()))
-            {
-                while(checker)
-                {
+            string tempLastPart = "";
+            string tempChar = "";
+            string s1 = v.Substring(1, v.Length - 1);
 
+            while (checker)
+            {
+                if (!libary.Contains(testChar.ToString()))
+                {
+                    tempChar += testChar.ToString();
+                    tempLastPart = s1;
+
+                    testChar = s1[0];
+                    s1 = s1.Substring(1);
+                }
+                else 
+                {
+                    if(tempChar == "")
+                    {
+                        tempLastPart = v;
+                    }
+
+                    checker = false;
                 }
             }
-            else
-            {
-
-            }
-
-
-            for (int i = 0; i < libary.Length; i++)
-            {
-                if (firstChar.ToString() == libary[i])
-                {
-                    result = v  + "ay";
-                    i = libary.Length;
-                }
-                else if (firstChar.ToString() != libary[i])
-                {
-                    string s1 = v.Substring(1, v.Length - 1);
-                    result = s1 + firstChar.ToString() + "ay";
-                }
-            }
-
-            return result;
+            
+            return tempLastPart + tempChar + "ay";
         }
     }
 }
