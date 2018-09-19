@@ -17,29 +17,29 @@ namespace PigLatin
             string tempLastPart = "";
             string tempChar = "";
             string s1 = v.Substring(1, v.Length - 1);
-
-            while (checker)
+            
+            while (checker) // Checker om "checker" er true/false
             {
-                if (!libary.Contains(testChar.ToString()))
+                if (!libary.Contains(testChar.ToString())) // Checker om vores udtaget bogstav er i vores "libary"
                 {
-                    tempChar += testChar.ToString();
-                    tempLastPart = s1;
+                    tempChar += testChar.ToString(); // Gemmer det udtaget bogstav i en midlertidig variable
+                    tempLastPart = s1; // Gemmer det resterende ord i en midlertidig variable
 
-                    testChar = s1[0];
-                    s1 = s1.Substring(1);
+                    testChar = s1[0]; // Finder det næste bogstav i det resterende ord og gemmer i "testChar"
+                    s1 = s1.Substring(1); // Finder det resterende ord og gemmer i "s1"
                 }
                 else 
                 {
-                    if(tempChar == "")
+                    if(tempChar == "") // Checker om "tempChar" er tom
                     {
-                        tempLastPart = v;
+                        tempLastPart = v; // Sætter "tempLastPart" til at være "v"
                     }
 
-                    checker = false;
+                    checker = false; // Sætter "checker" til false
                 }
             }
             
-            return tempLastPart + tempChar + "ay";
+            return tempLastPart + tempChar + "ay"; // Printer ud
         }
     }
 }
