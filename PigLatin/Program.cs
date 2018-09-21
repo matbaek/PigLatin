@@ -10,7 +10,7 @@ namespace PigLatin
     {
         static void Main(string[] args)
         {
-            
+
         }
     }
 }
